@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganna Negm — Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #38bdf8;
+            --accent: #10b981;
+            --code-accent: #a855f7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --danger: #ef4444;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 5%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .admin-toggle-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .admin-toggle-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 110px 5% 50px 5%;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            max-width: 600px;
+            flex: 1 1 300px;
+        }
+        .hero-content h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .hero-content p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+        .btn-accent {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+        }
+        .btn-purple {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
+        }
+
+        .hero-img-box {
+            width: clamp(220px, 40vw, 280px);
+            height: clamp(250px, 45vw, 310px);
+            border: 2px dashed rgba(56, 189, 248, 0.4);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.02);
+            position: relative;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .hero-avatar {
+            width: clamp(140px, 28vw, 180px);
+            height: clamp(140px, 28vw, 180px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 12px;
+        }
+        .change-avatar-btn {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        section {
+            padding: 50px 5%;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+            font-weight: 700;
+        }
+        .section-title span {
+            color: var(--primary);
+        }
+        .projects-grid, .skills-grid, .certs-grid, .code-grid, .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .card-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            margin-right: 4px;
+            margin-bottom: 6px;
+        }
+        .badge-purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+        }
+        .badge-green {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+        
+        .delete-card-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .delete-card-btn:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .code-box {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.82rem;
+            color: #a7f3d0;
+            overflow-x: auto;
+            max-height: 200px;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 17, 32, 0.88);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            padding: 15px;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content-large {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.6rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            font-size: 0.88rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 35px 15px;
+            background: rgba(255,255,255,0.02);
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            color: var(--text-muted);
+        }
+        .empty-state i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #0f172a;
+            height: 180px;
+        }
+        .project-svg-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: #fff;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .project-img-wrapper:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Responsive Navigation for Mobile Devices */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 4%;
+            }
+            nav {
+                gap: 10px;
+            }
+            nav a {
+                font-size: 0.78rem;
+            }
+            section {
+                padding: 40px 4%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Ganna Negm</a>
+        <nav>
+            <a href="#overview">Home</a>
+            <a href="#projects">Dashboards</a>
+            <a href="#code-projects">Code</a>
+            <a href="#trainings">Trainings</a>
+            <a href="#certificates">Certs</a>
+            <button class="admin-toggle-btn" id="adminToggleBtn" type="button">
+                <i class="fa-solid fa-lock"></i> <span id="adminBtnText">Admin</span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="overview">
+        <div class="hero-content">
+            <h3>Hello, I'm</h3>
+            <h1>Ganna Negm</h1>
+            <p>
+                <b>Junior Data Analyst</b> & Information Systems Student at FCAI. Specialized in building interactive dashboards (Power BI / Tableau), writing complex SQL queries, and performing Python data analysis.
+            </p>
+            <a href="#contact" class="btn">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-img-box">
+            <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Ganna Negm" class="hero-avatar">
+            <label class="change-avatar-btn admin-only" style="display: none;">
+                <i class="fa-solid fa-camera"></i> Change Avatar
+                <input type="file" accept="image/*" style="display: none;" onchange="changeProfilePicture(event)">
+            </label>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Dashboard <span>Projects</span></h2>
+            <button class="btn btn-accent admin-only" style="display: none;" onclick="openAddProjectModal()">
+                <i class="fa-solid fa-plus"></i> Add Dashboard Project
+            </button>
+        </div>
+        <div class="projects-grid" id="projectsContainer">
+            <div class="empty-state">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h3>No Dashboard Projects Yet</h3>
+                <p style="margin-top: 6px;">Portfolio is currently in viewer mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="code-projects" style="background: rgba(30, 41, 59, 0.2);">
+        <div class="section-header">
+            <h2 class="section-title">SQL & Python <span>Code Projects</span></h2>
+            <button class="btn btn-purple admin-only" style="display: none;" onclick="openAddCodeModal()">
+                <i class="fa-solid fa-code"></i> Add Code / Query Script
+            </button>
+        </div>
+        <div class="code-grid" id="codeProjectsContainer">
+            <div class="empty-state">
+                <i class="fa-solid fa-terminal"></i>
+                <h3>No SQL or Python Projects Added</h3>
+                <p style="margin-top: 6px;">Portfolio is currently in viewer mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trainings">
+        <div class="section-header">
+            <h2 class="section-title">Trainings & <span>Internships</span></h2>
+            <button class="btn btn-accent admin-only" style="display: none;" onclick="openAddTrainingModal()">
+                <i class="fa-solid fa-briefcase"></i> Add Training / Internship
+            </button>
+        </div>
+        <div class="training-grid" id="trainingsContainer">
+            <div class="empty-state">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>No Trainings or Internships Added</h3>
+                <p style="margin-top: 6px;">Portfolio is currently in viewer mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" style="background: rgba(30, 41, 59, 0.2);">
+        <div class="section-header">
+            <h2 class="section-title">Certificates & <span>Credentials</span></h2>
+            <button class="btn btn-accent admin-only" style="display: none;" onclick="openAddCertModal()">
+                <i class="fa-solid fa-award"></i> Add Certificate
+            </button>
+        </div>
+        <div class="certs-grid" id="certsContainer">
+            <div class="empty-state">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>No Certificates Added Yet</h3>
+                <p style="margin-top: 6px;">Portfolio is currently in viewer mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; border-top: 1px solid var(--border-color);">
+        <h2 class="section-title" style="margin-bottom: 12px;">Get In <span>Touch</span></h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 20px auto; font-size: 0.95rem;">
+            Open for Junior Data Analyst opportunities, internships, and data analysis projects.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; margin-bottom: 20px;">
+            <a href="mailto:gannanegm@example.com" style="color: var(--primary);"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://linkedin.com" target="_blank" style="color: var(--primary);"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com" target="_blank" style="color: var(--primary);"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">© 2026 Ganna Negm. All rights reserved.</p>
+    </section>
+
+    <!-- Modal: Admin Password Login -->
+    <div class="modal" id="adminAuthModal">
+        <div class="modal-content-large" style="max-width: 400px; text-align: center;">
+            <span class="close-modal" onclick="closeModal('adminAuthModal')">&times;</span>
+            <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;">
+                <i class="fa-solid fa-user-lock"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 8px;">Admin Login</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Enter admin password to enable editing controls.</p>
+            <div class="form-group">
+                <input type="password" id="adminPassInput" placeholder="Enter Password (admin123)" style="text-align: center; font-size: 1rem;" onkeydown="if(event.key==='Enter') verifyAdminPassword()">
+            </div>
+            <button class="btn" style="width: 100%; justify-content: center;" onclick="verifyAdminPassword()" type="button">Login</button>
+        </div>
+    </div>
+
+    <!-- Modal: View Dashboard Project Gallery -->
+    <div class="modal" id="projectGalleryModal">
+        <div class="modal-content-large">
+            <span class="close-modal" onclick="closeModal('projectGalleryModal')">&times;</span>
+            <h3 id="galleryTitle" style="color: var(--primary); margin-bottom: 15px; text-align: center;"></h3>
+            <div style="display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap;" id="galleryThumbsContainer"></div>
+            <div style="width: 100%; min-height: 250px; background: #090d16; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
+                <img id="galleryImg" src="" style="width: 100%; max-height: 450px; object-fit: contain;">
+            </div>
+            <p id="galleryDesc" style="color: var(--text-muted); text-align: center; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; font-size: 0.88rem;"></p>
+        </div>
+    </div>
+
+    <!-- Modal: View Code Script -->
+    <div class="modal" id="codeViewModal">
+        <div class="modal-content-large" style="max-width: 700px;">
+            <span class="close-modal" onclick="closeModal('codeViewModal')">&times;</span>
+            <h3 id="codeModalTitle" style="color: var(--code-accent); margin-bottom: 10px;"></h3>
+            <p id="codeModalDesc" style="color: var(--text-muted); margin-bottom: 12px; font-size: 0.88rem;"></p>
+            <div class="code-box" id="codeModalBody"></div>
+            <button class="btn btn-purple" style="margin-top: 15px; width: 100%; justify-content: center;" onclick="copyCodeFromModal()">
+                <i class="fa-solid fa-copy"></i> Copy Script Code
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal: Add Dashboard Project -->
+    <div class="modal" id="addProjectModal">
+        <div class="modal-content-large" style="max-width: 520px;">
+            <span class="close-modal" onclick="closeModal('addProjectModal')">&times;</span>
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 18px;">Add Dashboard Project</h3>
+            <div class="form-group"><label>Project Title</label><input type="text" id="pTitle" placeholder="e.g. Sales Analytics Dashboard"></div>
+            <div class="form-group"><label>Tools / Tech Stack</label><input type="text" id="pTags" placeholder="e.g. Power BI, DAX, SQL"></div>
+            <div class="form-group"><label>Description</label><textarea id="pDesc" rows="3" placeholder="Overview of insights and key performance metrics..."></textarea></div>
+            <div class="form-group"><label><i class="fa-solid fa-image" style="color: var(--primary);"></i> Cover Image</label><input type="file" accept="image/*" id="pCover"></div>
+            <div class="form-group"><label><i class="fa-solid fa-images" style="color: var(--accent);"></i> Dashboard Pages Screenshots</label><input type="file" accept="image/*" multiple id="pPages"></div>
+            <button class="btn btn-accent" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="saveDashboardProject()"><i class="fa-solid fa-check"></i> Save Dashboard Project</button>
+        </div>
+    </div>
+
+    <!-- Modal: Add SQL / Python Code -->
+    <div class="modal" id="addCodeModal">
+        <div class="modal-content-large" style="max-width: 540px;">
+            <span class="close-modal" onclick="closeModal('addCodeModal')">&times;</span>
+            <h3 style="text-align: center; color: var(--code-accent); margin-bottom: 18px;">Add SQL / Python Project Code</h3>
+            <div class="form-group"><label>Project Name</label><input type="text" id="cTitle" placeholder="e.g. Customer Churn Analysis"></div>
+            <div class="form-group">
+                <label>Language / Technology</label>
+                <select id="cLang">
+                    <option value="SQL">SQL Query / Script</option>
+                    <option value="Python">Python Data Script</option>
+                    <option value="R">R Analytics</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Project Summary</label><textarea id="cDesc" rows="2" placeholder="Brief description of logic..."></textarea></div>
+            <div class="form-group"><label>Paste Code / Query Text</label><textarea id="cCode" rows="7" style="font-family: monospace; font-size: 0.82rem;" placeholder="SELECT * FROM sales..."></textarea></div>
+            <button class="btn btn-purple" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="saveCodeProject()"><i class="fa-solid fa-check"></i> Save Code Project</button>
+        </div>
+    </div>
+
+    <!-- Modal: Add Training -->
+    <div class="modal" id="addTrainingModal">
+        <div class="modal-content-large" style="max-width: 500px;">
+            <span class="close-modal" onclick="closeModal('addTrainingModal')">&times;</span>
+            <h3 style="text-align: center; color: var(--accent); margin-bottom: 18px;">Add Training / Internship</h3>
+            <div class="form-group"><label>Role / Course Title</label><input type="text" id="tTitle" placeholder="e.g. Data Analytics Trainee"></div>
+            <div class="form-group"><label>Company / Organization</label><input type="text" id="tCompany" placeholder="e.g. DEPI / Digital Egypt"></div>
+            <div class="form-group"><label>Details & Skills Learned</label><textarea id="tDesc" rows="3" placeholder="Key topics covered..."></textarea></div>
+            <div class="form-group"><label><i class="fa-solid fa-file-image" style="color: var(--primary);"></i> Image / Certificate (Optional)</label><input type="file" accept="image/*" id="tImg"></div>
+            <button class="btn btn-accent" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="saveTraining()"><i class="fa-solid fa-check"></i> Save Training</button>
+        </div>
+    </div>
+
+    <!-- Modal: Add Certificate -->
+    <div class="modal" id="addCertModal">
+        <div class="modal-content-large" style="max-width: 500px;">
+            <span class="close-modal" onclick="closeModal('addCertModal')">&times;</span>
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 18px;">Add Certificate</h3>
+            <div class="form-group"><label>Certificate Title</label><input type="text" id="certTitle" placeholder="e.g. Google Data Analytics"></div>
+            <div class="form-group"><label>Category / Tag</label><input type="text" id="certBadge" placeholder="e.g. Data Analysis"></div>
+            <div class="form-group"><label>Description</label><textarea id="certDesc" rows="2" placeholder="Skills certified..."></textarea></div>
+            <div class="form-group"><label><i class="fa-solid fa-file-image" style="color: var(--primary);"></i> Certificate Image</label><input type="file" accept="image/*" id="certImg"></div>
+            <button class="btn btn-accent" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="saveCertificate()"><i class="fa-solid fa-check"></i> Save Certificate</button>
+        </div>
+    </div>
+
+    <script>
+        let isAdmin = false;
+        const ADMIN_PASSWORD = "admin123";
+
+        // Restore user data safely from LocalStorage
+        let store = {
+            dashboards: JSON.parse(localStorage.getItem('ganna_dashboards') || '{}'),
+            codes: JSON.parse(localStorage.getItem('ganna_codes') || '{}'),
+            trainings: JSON.parse(localStorage.getItem('ganna_trainings') || '{}'),
+            certs: JSON.parse(localStorage.getItem('ganna_certs') || '{}')
+        };
+
+        function saveStoreToLocalStorage() {
+            try {
+                localStorage.setItem('ganna_dashboards', JSON.stringify(store.dashboards));
+                localStorage.setItem('ganna_codes', JSON.stringify(store.codes));
+                localStorage.setItem('ganna_trainings', JSON.stringify(store.trainings));
+                localStorage.setItem('ganna_certs', JSON.stringify(store.certs));
+                return true;
+            } catch (e) {
+                alert("Local Storage Quota Exceeded! Please use smaller images or delete old items.");
+                return false;
+            }
+        }
+
+        // Direct function to handle Admin click
+        function toggleAdminMode() {
+            if (isAdmin) {
+                isAdmin = false;
+                updateAdminUI();
+            } else {
+                openModal('adminAuthModal');
+                const passInput = document.getElementById('adminPassInput');
+                if (passInput) {
+                    passInput.value = '';
+                    setTimeout(() => passInput.focus(), 100);
+                }
+            }
+        }
+
+        function verifyAdminPassword() {
+            const inputEl = document.getElementById('adminPassInput');
+            if (!inputEl) return;
+            const inputPass = inputEl.value;
+            if (inputPass === ADMIN_PASSWORD) {
+                isAdmin = true;
+                closeModal('adminAuthModal');
+                updateAdminUI();
+            } else {
+                alert("Password incorrect! Use: admin123");
+            }
+        }
+
+        function updateAdminUI() {
+            const btn = document.getElementById('adminToggleBtn');
+            const btnText = document.getElementById('adminBtnText');
+            const adminElements = document.querySelectorAll('.admin-only');
+
+            if (isAdmin) {
+                if (btn) btn.classList.add('active');
+                if (btnText) btnText.innerText = "Admin Active";
+                const icon = btn ? btn.querySelector('i') : null;
+                if (icon) icon.className = "fa-solid fa-unlock";
+                adminElements.forEach(el => el.style.display = "inline-flex");
+            } else {
+                if (btn) btn.classList.remove('active');
+                if (btnText) btnText.innerText = "Admin";
+                const icon = btn ? btn.querySelector('i') : null;
+                if (icon) icon.className = "fa-solid fa-lock";
+                adminElements.forEach(el => el.style.display = "none");
+            }
+            renderDashboards();
+            renderCodes();
+            renderTrainings();
+            renderCerts();
+        }
+
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+        }
+
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('active');
+        }
+
+        function openAddProjectModal() { if(isAdmin) openModal('addProjectModal'); }
+        function openAddCodeModal() { if(isAdmin) openModal('addCodeModal'); }
+        function openAddTrainingModal() { if(isAdmin) openModal('addTrainingModal'); }
+        function openAddCertModal() { if(isAdmin) openModal('addCertModal'); }
+
+        const compressImage = (file, maxWidth = 900, maxHeight = 900, quality = 0.75) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height *= maxWidth / width;
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width *= maxHeight / height;
+                                height = maxHeight;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        };
+
+        const readFile = (file) => compressImage(file, 900, 900, 0.75);
+
+        function changeProfilePicture(event) {
+            if (!isAdmin) return;
+            const file = event.target.files[0];
+            if (!file) return;
+            compressImage(file, 400, 400, 0.7).then(base64 => {
+                document.getElementById('avatarImage').src = base64;
+                try {
+                    localStorage.setItem('ganna_avatar', base64);
+                } catch(e) {
+                    alert("Storage limit reached for avatar image.");
+                }
+            });
+        }
+
+        async function saveDashboardProject() {
+            if(!isAdmin) return;
+            const title = document.getElementById('pTitle').value.trim() || "Dashboard Project";
+            const tags = (document.getElementById('pTags').value.trim() || "Analytics").split(',');
+            const desc = document.getElementById('pDesc').value.trim() || "No description provided.";
+            
+            const coverInput = document.getElementById('pCover').files[0];
+            const pageFiles = Array.from(document.getElementById('pPages').files || []);
+
+            const pagesPromises = pageFiles.map((f, i) => readFile(f).then(url => ({ name: `Page ${i+1}`, imgSrc: url, desc: `Page ${i+1} preview` })));
+            const pages = await Promise.all(pagesPromises);
+            
+            let coverImg = coverInput ? await readFile(coverInput) : (pages[0]?.imgSrc || `https://placehold.co/600x350/1e293b/38bdf8?text=${encodeURIComponent(title)}`);
+
+            if (pages.length === 0) pages.push({ name: 'Page 1', imgSrc: coverImg, desc: desc });
+
+            const key = 'dash_' + Date.now();
+            store.dashboards[key] = { title, tags, desc, coverImg, pages };
+            
+            if (saveStoreToLocalStorage()) {
+                renderDashboards();
+                closeModal('addProjectModal');
+                document.getElementById('pTitle').value = '';
+                document.getElementById('pTags').value = '';
+                document.getElementById('pDesc').value = '';
+                document.getElementById('pCover').value = '';
+                document.getElementById('pPages').value = '';
+            } else {
+                delete store.dashboards[key];
+            }
+        }
+
+        function renderDashboards() {
+            const container = document.getElementById('projectsContainer');
+            if(!container) return;
+            const keys = Object.keys(store.dashboards);
+            if(keys.length === 0) {
+                container.innerHTML = `<div class="empty-state"><i class="fa-solid fa-chart-pie"></i><h3>No Dashboard Projects Added Yet</h3></div>`;
+                return;
+            }
+
+            container.innerHTML = keys.map(k => {
+                const item = store.dashboards[k];
+                const tagsHtml = item.tags.map(t => `<span class="badge">${t.trim()}</span>`).join('');
+                const deleteBtnHtml = isAdmin ? `<button class="delete-card-btn" onclick="deleteItem('dashboards', '${k}')"><i class="fa-solid fa-trash"></i></button>` : '';
+                
+                return `
+                    <div class="card">
+                        ${deleteBtnHtml}
+                        <div class="project-img-wrapper" onclick="viewGallery('${k}')">
+                            <img src="${item.coverImg}" class="project-svg-cover" alt="${item.title}">
+                            <div class="project-overlay"><i class="fa-solid fa-expand"></i><span>View Screenshots (${item.pages.length})</span></div>
+                        </div>
+                        <div style="margin-top: 12px;">
+                            <div>${tagsHtml}</div>
+                            <h4 style="margin: 6px 0; color: #fff; font-size: 1rem;">${item.title}</h4>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px;">${item.desc}</p>
+                            <button class="btn btn-accent" style="width: 100%; justify-content: center; font-size: 0.82rem;" onclick="viewGallery('${k}')">
+                                <i class="fa-solid fa-images"></i> View All Pages (${item.pages.length})
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        let currentActiveGallery = null;
+        function viewGallery(key) {
+            currentActiveGallery = store.dashboards[key];
+            if (!currentActiveGallery) return;
+            document.getElementById('galleryTitle').innerText = currentActiveGallery.title;
+            renderGalleryPage(0);
+            openModal('projectGalleryModal');
+        }
+
+        function renderGalleryPage(idx) {
+            const page = currentActiveGallery.pages[idx];
+            document.getElementById('galleryImg').src = page.imgSrc;
+            document.getElementById('galleryDesc').innerText = page.desc || currentActiveGallery.desc;
+            
+            const thumbs = document.getElementById('galleryThumbsContainer');
+            thumbs.innerHTML = currentActiveGallery.pages.map((p, i) => `
+                <button class="btn" style="padding: 4px 10px; font-size: 0.78rem; background: ${i === idx ? 'var(--primary)' : 'rgba(255,255,255,0.05)'}; color: ${i === idx ? '#0f172a' : '#fff'}" onclick="renderGalleryPage(${i})">${p.name}</button>
+            `).join('');
+        }
+
+        function saveCodeProject() {
+            if(!isAdmin) return;
+            const title = document.getElementById('cTitle').value.trim() || "Script Project";
+            const lang = document.getElementById('cLang').value;
+            const desc = document.getElementById('cDesc').value.trim() || "Analysis script.";
+            const code = document.getElementById('cCode').value.trim() || "-- Insert code here";
+
+            const key = 'code_' + Date.now();
+            store.codes[key] = { title, lang, desc, code };
+            saveStoreToLocalStorage();
+            renderCodes();
+            closeModal('addCodeModal');
+            document.getElementById('cTitle').value = '';
+            document.getElementById('cDesc').value = '';
+            document.getElementById('cCode').value = '';
+        }
+
+        function renderCodes() {
+            const container = document.getElementById('codeProjectsContainer');
+            if(!container) return;
+            const keys = Object.keys(store.codes);
+            if(keys.length === 0) {
+                container.innerHTML = `<div class="empty-state"><i class="fa-solid fa-terminal"></i><h3>No Code Projects Added Yet</h3></div>`;
+                return;
+            }
+
+            container.innerHTML = keys.map(k => {
+                const item = store.codes[k];
+                const deleteBtnHtml = isAdmin ? `<button class="delete-card-btn" onclick="deleteItem('codes', '${k}')"><i class="fa-solid fa-trash"></i></button>` : '';
+
+                return `
+                    <div class="card" style="border-top: 3px solid var(--code-accent);">
+                        ${deleteBtnHtml}
+                        <span class="badge badge-purple">${item.lang}</span>
+                        <h4 style="margin: 6px 0; color: #fff; font-size: 1rem;">${item.title}</h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px;">${item.desc}</p>
+                        <div class="code-box">${escapeHtml(item.code.substring(0, 150))}...</div>
+                        <button class="btn btn-purple" style="width: 100%; margin-top: 10px; justify-content: center; font-size: 0.82rem;" onclick="viewCode('${k}')">
+                            <i class="fa-solid fa-code"></i> View Full Script
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        let activeCodeText = "";
+        function viewCode(key) {
+            const item = store.codes[key];
+            activeCodeText = item.code;
+            document.getElementById('codeModalTitle').innerText = `${item.lang}: ${item.title}`;
+            document.getElementById('codeModalDesc').innerText = item.desc;
+            document.getElementById('codeModalBody').innerText = item.code;
+            openModal('codeViewModal');
+        }
+
+        function copyCodeFromModal() {
+            document.execCommand('copy');
+            alert("Code copied to clipboard!");
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        async function saveTraining() {
+            if(!isAdmin) return;
+            const title = document.getElementById('tTitle').value.trim() || "Training";
+            const company = document.getElementById('tCompany').value.trim() || "Organization";
+            const desc = document.getElementById('tDesc').value.trim() || "Training description";
+            const file = document.getElementById('tImg').files[0];
+
+            const imgSrc = file ? await readFile(file) : null;
+            const key = 'tr_' + Date.now();
+            store.trainings[key] = { title, company, desc, imgSrc };
+            
+            if (saveStoreToLocalStorage()) {
+                renderTrainings();
+                closeModal('addTrainingModal');
+                document.getElementById('tTitle').value = '';
+                document.getElementById('tCompany').value = '';
+                document.getElementById('tDesc').value = '';
+                document.getElementById('tImg').value = '';
+            } else {
+                delete store.trainings[key];
+            }
+        }
+
+        function renderTrainings() {
+            const container = document.getElementById('trainingsContainer');
+            if(!container) return;
+            const keys = Object.keys(store.trainings);
+            if(keys.length === 0) {
+                container.innerHTML = `<div class="empty-state"><i class="fa-solid fa-graduation-cap"></i><h3>No Trainings Added Yet</h3></div>`;
+                return;
+            }
+
+            container.innerHTML = keys.map(k => {
+                const item = store.trainings[k];
+                const deleteBtnHtml = isAdmin ? `<button class="delete-card-btn" onclick="deleteItem('trainings', '${k}')"><i class="fa-solid fa-trash"></i></button>` : '';
+
+                return `
+                    <div class="card">
+                        ${deleteBtnHtml}
+                        <div class="card-icon" style="color: var(--accent);"><i class="fa-solid fa-user-graduate"></i></div>
+                        <span class="badge badge-green">${item.company}</span>
+                        <h4 style="margin: 6px 0; color: #fff; font-size: 1rem;">${item.title}</h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px;">${item.desc}</p>
+                        ${item.imgSrc ? `<img src="${item.imgSrc}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px;">` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function saveCertificate() {
+            if(!isAdmin) return;
+            const title = document.getElementById('certTitle').value.trim() || "Certificate";
+            const badge = document.getElementById('certBadge').value.trim() || "Certification";
+            const desc = document.getElementById('certDesc').value.trim() || "Details";
+            const file = document.getElementById('certImg').files[0];
+
+            const imgSrc = file ? await readFile(file) : `https://placehold.co/600x400/1e293b/38bdf8?text=${encodeURIComponent(title)}`;
+            const key = 'cert_' + Date.now();
+            store.certs[key] = { title, badge, desc, imgSrc };
+            
+            if (saveStoreToLocalStorage()) {
+                renderCerts();
+                closeModal('addCertModal');
+                document.getElementById('certTitle').value = '';
+                document.getElementById('certBadge').value = '';
+                document.getElementById('certDesc').value = '';
+                document.getElementById('certImg').value = '';
+            } else {
+                delete store.certs[key];
+            }
+        }
+
+        function renderCerts() {
+            const container = document.getElementById('certsContainer');
+            if(!container) return;
+            const keys = Object.keys(store.certs);
+            if(keys.length === 0) {
+                container.innerHTML = `<div class="empty-state"><i class="fa-solid fa-certificate"></i><h3>No Certificates Added Yet</h3></div>`;
+                return;
+            }
+
+            container.innerHTML = keys.map(k => {
+                const item = store.certs[k];
+                const deleteBtnHtml = isAdmin ? `<button class="delete-card-btn" onclick="deleteItem('certs', '${k}')"><i class="fa-solid fa-trash"></i></button>` : '';
+
+                return `
+                    <div class="card">
+                        ${deleteBtnHtml}
+                        <img src="${item.imgSrc}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                        <span class="badge">${item.badge}</span>
+                        <h4 style="margin: 6px 0; color: #fff; font-size: 1rem;">${item.title}</h4>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">${item.desc}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function deleteItem(type, key) {
+            if(!isAdmin) return;
+            delete store[type][key];
+            saveStoreToLocalStorage();
+            if (type === 'dashboards') renderDashboards();
+            if (type === 'codes') renderCodes();
+            if (type === 'trainings') renderTrainings();
+            if (type === 'certs') renderCerts();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const adminBtn = document.getElementById('adminToggleBtn');
+            if (adminBtn) {
+                adminBtn.addEventListener('click', toggleAdminMode);
+            }
+
+            const savedAvatar = localStorage.getItem('ganna_avatar');
+            if (savedAvatar) {
+                const avatarEl = document.getElementById('avatarImage');
+                if (avatarEl) avatarEl.src = savedAvatar;
+            }
+            
+            // Force initial render of all stored items
+            renderDashboards();
+            renderCodes();
+            renderTrainings();
+            renderCerts();
+            updateAdminUI();
+        });
+    </script>
+</body>
+</html>
